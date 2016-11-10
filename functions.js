@@ -42,5 +42,5 @@ function count_char(ch, str, case_sensitive = true) {
 // console.log(min(-1, 2));
 // console.log(min(30, 12));
 
-console.log(count_char("м", "Мама мыла раму"));
-console.log(count_char("м", "Мама мыла раму", false));
+// console.log(count_char("м", "Мама мыла раму. М-м-м-м-м"));
+// console.log(count_char("м", "Мама мыла раму. М-м-м-м-м", false));
