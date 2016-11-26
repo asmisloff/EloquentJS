@@ -78,7 +78,6 @@ function nth(list, index) {
     }
     return nth(list.tail, index--);
 }
-
 // test
 // console.log(range(10, 11, 0.1));
 // console.log(reverseArray(["A", "B", "C"]));
