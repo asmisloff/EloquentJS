@@ -76,8 +76,26 @@ function nth(list, index) {
     if (index == 0 || list.tail == null) {
         return list.head;
     }
-    return nth(list.tail, index--);
+    return nth(list.tail, --index);
 }
+
+function deepEqual(o1, o2) {
+    if (o1 == null || o2 == null) {
+        return o1 == o2;
+    }
+    if (typeof(o1) != "object") {
+        return o1 == o2;
+    }
+    else {
+        for (var k in o1) {
+            if (!deepEqual(o1[k], o2[k])) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 // test
 // console.log(range(10, 11, 0.1));
 // console.log(reverseArray(["A", "B", "C"]));
@@ -87,4 +105,9 @@ function nth(list, index) {
 // console.log(arrayToList([10, 20]));
 // console.log(listToArray({ head: 10, tail: { head: 20, tail: { head: 30, tail: null } } }));
 // console.log(prepend(10, prepend(20, null)));
-// console.log(nth(arrayToList([10, 20, 30]), 1));
+// console.log(nth(arrayToList([10, 20, 30, 40]), 1));
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
