@@ -34,10 +34,6 @@ function count_char(ch, str, case_sensitive = true) {
     return cnt;
 }
 
-function arrayToList(arr) {
-  
-}
-
 //test
 // console.log(isEven(50));
 // console.log(isEven(75));
