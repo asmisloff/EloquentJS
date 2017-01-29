@@ -34,18 +34,33 @@ function diff() {
     return average(diffs);
 }
 
-function age_by_century() {
-    var by_century = {}
-    ancestry.forEach(
-        function (person) {
-            var century = Math.ceil(person.died / 100)
-            if (!(century in by_century)) {
-                by_century[century] = []
+function groupBy(proc, arr, transformation = null) {
+    var result = {}
+    arr.forEach(
+        function (elt) {
+            var key = proc(elt)
+            if (!(key in result)) {
+                result[key] = []
             }
-            by_century[century].push(person.died - person.born)
+            if (transformation) {
+                elt = transformation(elt)
+            }
+            result[key].push(elt)
         }
     )
-    console.log(by_century);
+    return result
+}
+
+function age_by_century() {
+    var by_century = groupBy(
+        function (person) {
+            return Math.ceil(person.died / 100)
+        },
+        ancestry,
+        function (person) {
+            return person.died - person.born
+        })
+
     for (century in by_century) {
         console.log(average(by_century[century]))
     }
