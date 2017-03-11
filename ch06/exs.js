@@ -66,9 +66,33 @@ function age_by_century() {
     }
 }
 
+function every(arr, func) {
+    for (var i in arr) {
+        if (!func(arr[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function some(arr, func) {
+    for (var i in arr) {
+        if (func(arr[i])) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // test
 // var arrays = [[1, 2, 3], [4, 5], [6]]
 // console.log(fold(arrays))
 // console.log(diff());
-age_by_century()
+//age_by_century()
+console.log(every([NaN, NaN, NaN], isNaN));
+// → true
+console.log(every([NaN, NaN, 4], isNaN));
+// → false
+console.log(some([NaN, 3, 4], isNaN));
+// → true
+console.log(some([2, 3, 4], isNaN));
